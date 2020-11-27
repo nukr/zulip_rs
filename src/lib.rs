@@ -1,5 +1,5 @@
 use pest_derive::*;
-use reqwest::blocking::Client;
+use reqwest::Client;
 use serde::Deserialize;
 use std::collections::HashMap;
 
@@ -27,7 +27,7 @@ impl<'a> MessageBuilder<'a> {
     pub fn content(&mut self, content: &'a str) {
         self.form.insert("content", content);
     }
-    pub fn send(&self) {
+    pub async fn send(&self) {
         let client = Client::new();
         let result = client
             .post(&format!("{}/api/v1/messages", &self.config.site))
@@ -35,6 +35,7 @@ impl<'a> MessageBuilder<'a> {
             .header("application", "x-www-form-urlencoded")
             .form(&self.form)
             .send()
+            .await
             .unwrap();
         println!("{:?}", result);
     }
