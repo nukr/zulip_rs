@@ -29,10 +29,12 @@ pub fn parse_from_str(rc: &str) -> Result<ZulipRuntimeConfig> {
         // A pair is a combination of the rule which matched and a span of input
         for inner_pair in pair.into_inner() {
             match inner_pair.as_rule() {
-                Rule::char => println!("char:  {}", inner_pair.as_str()),
-                Rule::section => println!("section:   {}", inner_pair.as_str()),
+                Rule::section => {
+                    if inner_pair.as_str() != "[api]" {
+                        panic!("not valid section")
+                    }
+                }
                 Rule::property => {
-                    println!("property:   {}", inner_pair.as_str());
                     let mut rule = inner_pair.into_inner();
                     let name: &str = rule.next().unwrap().as_str();
                     if name == "email" {
@@ -45,8 +47,7 @@ pub fn parse_from_str(rc: &str) -> Result<ZulipRuntimeConfig> {
                         site = rule.next().unwrap().as_str();
                     }
                 }
-                Rule::file => println!("file:   {}", inner_pair.as_str()),
-                Rule::EOI => println!("EOI: {}", inner_pair.as_str()),
+                Rule::EOI => break,
                 _ => println!("{:?}", inner_pair),
             };
         }
