@@ -1,6 +1,6 @@
 [package]
 name = "zulip_rs"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["nukr <nukrs.w@gmail.com>"]
 edition = "2018"
 description = "Rust library to access the Zulip API"
