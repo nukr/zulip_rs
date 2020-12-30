@@ -39,6 +39,10 @@ impl Client {
         let rc = parse_from_str(rc_str)?;
         Ok(Client { rc })
     }
+    pub fn parse(rc_str: &str) -> Result<Self> {
+        let rc = parse_from_str(rc_str)?;
+        Ok(Client { rc })
+    }
     pub async fn send_message(&self, msg: Message) -> Result<SendMessageResponse> {
         let client = reqwest::Client::new();
         let result = client
