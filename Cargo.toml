@@ -1,6 +1,6 @@
 [package]
 name = "zulip_rs"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["nukr <nukrs.w@gmail.com>"]
 edition = "2018"
 description = "Rust library to access the Zulip API"
@@ -12,6 +12,6 @@ license = "MIT"
 anyhow = "1.0.34"
 pest = "2.1.3"
 pest_derive = "2.1.0"
-reqwest = { version = "0.10.9", features = ["json"] }
+reqwest = { version = "0.11.3", features = ["json"] }
 serde = { version = "1.0.117", features = ["derive"] }
 toml = "0.5.7"
