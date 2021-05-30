@@ -5,6 +5,7 @@ authors = ["nukr <nukrs.w@gmail.com>"]
 edition = "2018"
 description = "Rust library to access the Zulip API"
 license = "MIT"
+repository = "https://github.com/nukr/zulip_rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
