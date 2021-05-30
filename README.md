@@ -1,3 +1,23 @@
+zulip_rs
+---
+
+Rust library to access the Zulip API
+
+## Usage
+```rust
+#[tokio::main]
+async main() -> Result<()>{
+  let client = Client::parse(rc)?;
+  let req = SendMessageRequest::Private {
+    to: "[8]".to_string(),
+    content: "hello world".to_string(),
+  };
+  let resp = client.send_message(req).await?;
+  println!("{:?}", resp);
+}
+```
+
+
 ## Messages
 - [x] Send a message (tested)
 - [ ] Upload a file
